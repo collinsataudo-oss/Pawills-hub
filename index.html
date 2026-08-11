@@ -1,428 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pawills Consulting Hub</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f5f7fb;
-      color: #172b4d;
-    }
-
-    header {
-      background: white;
-      padding: 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      width: 55px;
-      height: 55px;
-      object-fit: contain;
-    }
-
-    .brand h1 {
-      font-size: 20px;
-      color: #173d73;
-    }
-
-    .brand p {
-      color: #777;
-      font-size: 12px;
-      letter-spacing: 3px;
-    }
-
-    nav {
-      background: #173d73;
-      display: flex;
-      overflow-x: auto;
-      padding: 10px;
-      gap: 8px;
-    }
-
-    nav button {
-      background: transparent;
-      border: none;
-      color: white;
-      padding: 10px 14px;
-      white-space: nowrap;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-
-    nav button:hover {
-      background: rgba(255,255,255,.15);
-    }
-
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 25px 16px;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #173d73, #315c9b);
-      color: white;
-      padding: 35px 22px;
-      border-radius: 18px;
-      margin-bottom: 25px;
-    }
-
-    .hero h2 {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      line-height: 1.6;
-      max-width: 650px;
-    }
-
-    .section-title {
-      margin: 25px 0 15px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-    }
-
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 15px;
-      box-shadow: 0 3px 12px rgba(0,0,0,.07);
-    }
-
-    .card h3 {
-      margin: 10px 0;
-      color: #173d73;
-    }
-
-    .card p {
-      color: #666;
-      line-height: 1.5;
-    }
-
-    .icon {
-      font-size: 32px;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 11px 18px;
-      background: #d81b72;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .announcement {
-      border-left: 5px solid #d81b72;
-      background: white;
-      padding: 18px;
-      margin-bottom: 12px;
-      border-radius: 10px;
-    }
-
-    .announcement small {
-      color: #888;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 25px;
-      text-align: center;
-      background: #173d73;
-      color: white;
-    }
-
-    @media (max-width: 600px) {
-      .hero h2 {
-        font-size: 24px;
-      }
-
-      header {
-        padding: 12px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173d73">
+<meta name="description" content="Pawills Hub - a digital hub for educators.">
+<link rel="manifest" href="manifest.json">
+<title>Pawills Hub</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f5f7fb;color:#172b4d;line-height:1.6}
+header{background:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px #0001;position:sticky;top:0;z-index:10}
+.logo{width:52px;height:52px;object-fit:contain;border-radius:8px}
+.brand h1{font-size:21px;color:#173d73}.brand p{font-size:11px;letter-spacing:3px;color:#777}
+nav{background:#173d73;display:flex;overflow-x:auto;padding:9px;gap:7px;position:sticky;top:80px;z-index:9}
+nav button{background:transparent;color:#fff;border:0;padding:10px 13px;white-space:nowrap;font-size:15px;border-radius:8px}
+nav button:hover{background:#ffffff22}
+main{max-width:1050px;margin:auto;padding:24px 18px 50px}
+section{display:none}.active{display:block}
+.hero{background:linear-gradient(135deg,#214f91,#315e9d);color:#fff;border-radius:24px;padding:34px 28px;margin-bottom:28px}
+.hero h2{font-size:31px;margin-bottom:12px}.hero p{font-size:18px;max-width:760px}
+.btn{display:inline-block;background:#df1373;color:white;border:0;border-radius:10px;padding:12px 18px;margin-top:16px;font-size:15px;text-decoration:none;cursor:pointer}
+.btn.secondary{background:#173d73}.btn.light{background:#fff;color:#173d73}
+h2.title{margin:10px 0 18px;font-size:28px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:#fff;border-radius:20px;padding:24px;box-shadow:0 5px 20px #0000000c}
+.card .icon{font-size:34px;margin-bottom:8px}.card h3{font-size:21px;color:#173d73;margin-bottom:8px}.card p{color:#666}
+.form{background:#fff;padding:22px;border-radius:18px;box-shadow:0 4px 15px #0001;margin-bottom:20px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccd4e0;border-radius:9px;margin:7px 0 13px;font-size:15px}
+textarea{min-height:120px;resize:vertical}
+label{font-weight:bold;font-size:14px}
+.notice{background:#fff8e6;border-left:5px solid #f2b400;padding:14px;border-radius:8px;margin:15px 0}
+.subjects{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.subject{background:#fff;padding:14px;border-radius:12px;box-shadow:0 2px 10px #0001}
+.chatbox{background:#fff;border-radius:18px;padding:15px;min-height:270px;display:flex;flex-direction:column}
+.messages{flex:1;overflow:auto;margin-bottom:10px}.msg{background:#eef3fb;padding:9px 12px;border-radius:12px;margin:7px 0;max-width:85%}
+.msg.me{margin-left:auto;background:#173d73;color:#fff}
+.chatrow{display:flex;gap:7px}.chatrow input{margin:0}.chatrow button{margin:0}
+#board{width:100%;height:430px;background:#fff;border:2px solid #ccd4e0;border-radius:15px;touch-action:none}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tools button{padding:9px 12px;border:1px solid #ccd4e0;border-radius:8px;background:#fff}
+footer{background:#173d73;color:#fff;text-align:center;padding:25px}
+.small{font-size:13px;color:#666}
+.install{display:none;background:#e9f1ff;padding:14px;border-radius:12px;margin:15px 0}
+@media(max-width:600px){.hero h2{font-size:26px}.hero p{font-size:16px}nav{top:80px}}
+</style>
 </head>
-
 <body>
-
 <header>
-  <img src="logo.png" class="logo" alt="Pawills Consulting Logo">
-
-  <div class="brand">
-    <h1>PAWILLS</h1>
-    <p>CONSULTING</p>
-  </div>
+  <img class="logo" src="logo.png" alt="Pawills Hub logo" onerror="this.style.display='none'">
+  <div class="brand"><h1>PAWILLS HUB</h1><p>EDUCATION • TECHNOLOGY • RESOURCES</p></div>
 </header>
 
 <nav>
-  <button onclick="showSection('home')">Home</button>
-  <button onclick="showSection('curriculum')">Curriculum</button>
-  <button onclick="showSection('jobs')">Teacher Jobs</button>
-  <button onclick="showSection('announcements')">Announcements</button>
-  <button onclick="showSection('resources')">Resources</button>
+<button onclick="show('home')">Home</button>
+<button onclick="show('scheme')">Scheme of Work</button>
+<button onclick="show('classroom')">Classroom</button>
+<button onclick="show('community')">Community</button>
+<button onclick="show('complaints')">Complaints</button>
+<button onclick="show('login')">Login</button>
 </nav>
 
 <main>
+<section id="home" class="active">
+  <div class="hero">
+    <h2>Welcome to Pawills Hub</h2>
+    <p>A digital hub created for educators. Find scheme-of-work resources, connect with teachers, enter virtual classrooms and access useful educational tools.</p>
+    <button class="btn" onclick="show('scheme')">Explore Scheme of Work</button>
+  </div>
+  <div id="installBox" class="install">
+    <b>📱 Install Pawills Hub</b><br>
+    Add the website to your phone like an app when your browser offers the install option.
+    <br><button class="btn" onclick="installApp()">Install App</button>
+  </div>
+  <h2 class="title">What can you do here?</h2>
+  <div class="cards">
+    <div class="card"><div class="icon">📚</div><h3>Scheme of Work</h3><p>Browse subjects and organize teaching resources.</p><button class="btn" onclick="show('scheme')">Browse Subjects</button></div>
+    <div class="card"><div class="icon">🎓</div><h3>Virtual Classroom</h3><p>Use classroom tools including a translator and drawing board.</p><button class="btn" onclick="show('classroom')">Enter Classroom</button></div>
+    <div class="card"><div class="icon">💬</div><h3>Teacher Community</h3><p>Share ideas and communicate with other teachers.</p><button class="btn" onclick="show('community')">Open Community</button></div>
+    <div class="card"><div class="icon">📝</div><h3>Complaints & Support</h3><p>Submit concerns or requests for Pawills administrators.</p><button class="btn" onclick="show('complaints')">Make a Complaint</button></div>
+  </div>
+</section>
 
-  <section id="home">
+<section id="scheme">
+  <h2 class="title">📚 Scheme of Work — Subjects</h2>
+  <div class="notice">This is the starting subject library. We can later add classes, terms, weeks and downloadable scheme files for each subject.</div>
+  <div class="subjects">
+    <div class="subject">📖 English Language</div><div class="subject">➗ Mathematics</div><div class="subject">🔬 Basic Science</div>
+    <div class="subject">🌍 Social Studies</div><div class="subject">🧪 Chemistry</div><div class="subject">⚛️ Physics</div>
+    <div class="subject">🧬 Biology</div><div class="subject">💻 Computer Studies</div><div class="subject">💰 Economics</div>
+    <div class="subject">🏛️ Government</div><div class="subject">📜 History</div><div class="subject">🗺️ Geography</div>
+    <div class="subject">📈 Commerce</div><div class="subject">📒 Accounting</div><div class="subject">🎨 Cultural & Creative Arts</div>
+    <div class="subject">🕌 Christian/Islamic Religious Studies</div><div class="subject">🏃 Physical & Health Education</div><div class="subject">🌱 Agricultural Science</div>
+    <div class="subject">🧑‍🍳 Home Economics</div><div class="subject">🔧 Basic Technology</div><div class="subject">🗣️ French</div>
+  </div>
+  <p class="small" style="margin-top:15px">We can expand this list to match the exact Nigerian curriculum and your preferred classes/terms.</p>
+</section>
 
-    <div class="hero">
-      <h2>Welcome to Pawills Consulting Hub</h2>
-
-      <p>
-        A digital hub created for educators. Find curriculum resources,
-        discover teaching opportunities, access useful educational materials
-        and stay updated with important announcements.
-      </p>
-
-      <a href="#curriculum" class="button"
-         onclick="showSection('curriculum')">
-        Explore Curriculum
-      </a>
-    </div>
-
-    <h2 class="section-title">What can you do here?</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="icon">📚</div>
-        <h3>Curriculum Library</h3>
-        <p>
-          Stop spending hours browsing for curriculum materials.
-          Find organized teaching resources in one place.
-        </p>
-        <button class="button"
-          onclick="showSection('curriculum')">
-          Browse Library
-        </button>
-      </div>
-
-      <div class="card">
-        <div class="icon">💼</div>
-        <h3>Teacher Jobs</h3>
-        <p>
-          Discover teaching opportunities and make it easier
-          to apply for available positions.
-        </p>
-        <button class="button"
-          onclick="showSection('jobs')">
-          Find Jobs
-        </button>
-      </div>
-
-      <div class="card">
-        <div class="icon">📢</div>
-        <h3>Announcements</h3>
-        <p>
-          Stay informed about important announcements,
-          training programs and opportunities for educators.
-        </p>
-        <button class="button"
-          onclick="showSection('announcements')">
-          View Updates
-        </button>
-      </div>
-
-      <div class="card">
-        <div class="icon">👨🏽‍🏫</div>
-        <h3>Teacher Resources</h3>
-        <p>
-          Access useful materials designed to make teaching
-          easier, smarter and more effective.
-        </p>
-        <button class="button"
-          onclick="showSection('resources')">
-          View Resources
-        </button>
-      </div><div class="card">
-    <div class="icon">🎓</div>
-    <h3>Google Classroom</h3>
-    <p>Create, manage and join online classes with Google Classroom.</p>
-    <a href="https://classroom.google.com/" target="_blank">
-        <button>Open Google Classroom</button>
-    </a>
-</div>
-
-
-    </div>
-
-  </section>
-
-
-  <section id="curriculum" style="display:none">
-
-    <h2 class="section-title">📚 Curriculum Library</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>Mathematics</h3>
-        <p>Curriculum and teaching materials for Mathematics.</p>
-        <button class="button"
-          onclick="alert('Mathematics resources coming soon!')">
-          Open
-        </button>
-      </div>
-
-      <div class="card">
-        <h3>Basic Science</h3>
-        <p>Science curriculum resources for educators.</p>
-        <button class="button"
-          onclick="alert('Basic Science resources coming soon!')">
-          Open
-        </button>
-      </div>
-
-      <div class="card">
-        <h3>English Language</h3>
-        <p>English teaching resources and curriculum materials.</p>
-        <button class="button"
-          onclick="alert('English resources coming soon!')">
-          Open
-        </button>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section id="jobs" style="display:none">
-
-    <h2 class="section-title">💼 Teacher Job Opportunities</h2>
-
+<section id="classroom">
+  <h2 class="title">🎓 Pawills Virtual Classroom</h2>
+  <div class="cards">
     <div class="card">
-      <h3>Teaching opportunities</h3>
-
-      <p>
-        New teaching vacancies will appear here.
-        Teachers will be able to view job information
-        and apply for suitable positions.
-      </p>
-
-      <button class="button"
-        onclick="alert('Job application system coming soon!')">
-        Apply for a Job
-      </button>
+      <div class="icon">🌍</div><h3>Nigerian Language Translator</h3>
+      <p>Choose Hausa, Yoruba or Igbo and translate a phrase to English.</p>
+      <select id="lang"><option value="hausa">Hausa</option><option value="yoruba">Yoruba</option><option value="igbo">Igbo</option></select>
+      <textarea id="phrase" placeholder="Enter a phrase..."></textarea>
+      <button class="btn" onclick="translatePhrase()">Translate</button>
+      <div class="notice" id="translation">Translation will appear here.</div>
+      <p class="small">The first version uses a small built-in phrase dictionary. A full translator will need a translation service/API.</p>
     </div>
-
-  </section>
-
-
-  <section id="announcements" style="display:none">
-
-    <h2 class="section-title">📢 Important Announcements</h2>
-
-    <div class="announcement">
-      <h3>Welcome Educators!</h3>
-      <p>
-        Pawills Consulting Hub is being developed to make
-        educational resources easier to access.
-      </p>
-      <small>Latest update</small>
+    <div class="card">
+      <div class="icon">🧑‍🏫</div><h3>Google Classroom</h3>
+      <p>Open Google Classroom for your classes, assignments and learning materials.</p>
+      <a class="btn" href="https://classroom.google.com/" target="_blank" rel="noopener">Open Google Classroom</a>
     </div>
+  </div>
 
-    <div class="announcement">
-      <h3>Teacher Training</h3>
-      <p>
-        Watch this space for upcoming teacher training
-        programs and educational opportunities.
-      </p>
-      <small>Coming soon</small>
-    </div>
+  <h2 class="title" style="margin-top:30px">🖊️ Classroom Drawing Board</h2>
+  <p>Use this board for tutor explanations, diagrams or student work.</p>
+  <div class="tools">
+    <button onclick="clearBoard()">Clear</button><button onclick="setEraser()">Eraser</button><button onclick="setPen()">Pen</button>
+  </div>
+  <canvas id="board"></canvas>
+</section>
 
-  </section>
+<section id="community">
+  <h2 class="title">💬 Teacher Community</h2>
+  <div class="notice">The current version stores messages only on this device. To make a real multi-user chat where teachers can see one another's messages, we will connect a secure online database in the next stage.</div>
+  <div class="chatbox">
+    <div class="messages" id="messages"><div class="msg">Welcome to the Pawills teacher community! 👋</div></div>
+    <div class="chatrow"><input id="chatInput" placeholder="Write a message..."><button class="btn" onclick="sendMessage()">Send</button></div>
+  </div>
+</section>
 
+<section id="complaints">
+  <h2 class="title">📝 Complaints & Support</h2>
+  <div class="form">
+    <label>Your name</label><input id="complaintName" placeholder="Name">
+    <label>Email or phone</label><input id="complaintContact" placeholder="Contact">
+    <label>Complaint / request</label><textarea id="complaintText" placeholder="Tell Pawills what happened or what help you need..."></textarea>
+    <button class="btn" onclick="submitComplaint()">Submit Complaint</button>
+    <div id="complaintResult" class="notice" style="display:none"></div>
+    <p class="small">This first version saves the form locally. We'll connect it to an admin inbox when we add the backend.</p>
+  </div>
+</section>
 
-  <section id="resources" style="display:none">
-
-    <h2 class="section-title">👨🏽‍🏫 Teacher Resources</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="icon">📝</div>
-        <h3>Lesson Planning</h3>
-        <p>Tools and ideas to help teachers plan effective lessons.</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🎓</div>
-        <h3>Teaching Strategies</h3>
-        <p>Practical strategies for creating an engaging classroom.</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">💻</div>
-        <h3>Digital Teaching</h3>
-        <p>Resources for using technology effectively in education.</p>
-      </div>
-
-    </div>
-
-  </section>
-
+<section id="login">
+  <h2 class="title">🔐 Teacher Login</h2>
+  <div class="form">
+    <div class="notice">This is a frontend demo only. It does not securely create real accounts yet.</div>
+    <label>Email</label><input id="email" type="email" placeholder="teacher@example.com">
+    <label>Password</label><input id="password" type="password" placeholder="Password">
+    <button class="btn" onclick="demoLogin()">Login</button>
+    <p id="loginResult" style="margin-top:12px"></p>
+    <p class="small">For real accounts, passwords must be handled by a secure authentication service. We will add that after the design is working.</p>
+  </div>
+</section>
 </main>
 
-
-<footer>
-  <strong>PAWILLS CONSULTING</strong>
-  <p>Empowering educators through technology and resources.</p>
-</footer>
-
+<footer><strong>PAWILLS HUB</strong><br>Empowering educators through technology and resources.</footer>
 
 <script>
-
-function showSection(sectionId) {
-
-  const sections = [
-    "home",
-    "curriculum",
-    "jobs",
-    "announcements",
-    "resources"
-  ];
-
-  sections.forEach(function(id) {
-    document.getElementById(id).style.display = "none";
-  });
-
-  document.getElementById(sectionId).style.display = "block";
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+function show(id){
+ document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
 }
-
+function demoLogin(){
+ const email=document.getElementById('email').value.trim();
+ document.getElementById('loginResult').textContent=email ? 'Demo login successful for '+email+'. Real authentication will be connected next.' : 'Please enter an email.';
+}
+function submitComplaint(){
+ const name=document.getElementById('complaintName').value.trim();
+ const text=document.getElementById('complaintText').value.trim();
+ const result=document.getElementById('complaintResult');
+ result.style.display='block';
+ result.textContent=name && text ? 'Complaint saved on this device. Online admin delivery will be added in the backend stage.' : 'Please enter your name and complaint.';
+}
+function sendMessage(){
+ const input=document.getElementById('chatInput'); const text=input.value.trim(); if(!text)return;
+ const box=document.getElementById('messages'); const div=document.createElement('div'); div.className='msg me'; div.textContent=text; box.appendChild(div); input.value=''; box.scrollTop=box.scrollHeight;
+ localStorage.setItem('pawills_last_message',text);
+}
+const dict={
+ hausa:{'sannu':'hello','ina kwana':'good morning','ina yini':'good afternoon','na gode':'thank you','yaya kake':'how are you'},
+ yoruba:{'bawo ni':'how are you','e kaaro':'good morning','e kaasan':'good afternoon','o se':'thank you','bẹẹni':'yes','rara':'no'},
+ igbo:{'kedu':'how are you','ndewo':'hello','ututu oma':'good morning','daalu':'thank you','ee':'yes','mba':'no'}
+};
+function translatePhrase(){
+ const lang=document.getElementById('lang').value, text=document.getElementById('phrase').value.trim().toLowerCase();
+ const result=dict[lang][text];
+ document.getElementById('translation').textContent=result ? 'English: '+result : 'Phrase not in the starter dictionary yet. We will expand the translator in the next version.';
+}
+let canvas=document.getElementById('board'),ctx=canvas.getContext('2d'),drawing=false,erase=false;
+function resizeCanvas(){
+ const r=canvas.getBoundingClientRect(); const old=canvas.toDataURL();
+ canvas.width=r.width*devicePixelRatio; canvas.height=r.height*devicePixelRatio; ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+}
+resizeCanvas(); window.addEventListener('resize',resizeCanvas);
+function pos(e){const r=canvas.getBoundingClientRect(); const p=e.touches?e.touches[0]:e; return {x:p.clientX-r.left,y:p.clientY-r.top}}
+function start(e){drawing=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);e.preventDefault()}
+function move(e){if(!drawing)return;const p=pos(e);ctx.lineWidth=erase?18:3;ctx.lineCap='round';ctx.strokeStyle=erase?'#fff':'#173d73';ctx.lineTo(p.x,p.y);ctx.stroke();e.preventDefault()}
+function stop(){drawing=false}
+canvas.addEventListener('mousedown',start);canvas.addEventListener('mousemove',move);canvas.addEventListener('mouseup',stop);canvas.addEventListener('mouseleave',stop);
+canvas.addEventListener('touchstart',start,{passive:false});canvas.addEventListener('touchmove',move,{passive:false});canvas.addEventListener('touchend',stop);
+function clearBoard(){ctx.clearRect(0,0,canvas.width,canvas.height)}
+function setEraser(){erase=true} function setPen(){erase=false}
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBox').style.display='block'});
+async function installApp(){if(!deferredPrompt)return;deferredPrompt.prompt();deferredPrompt=null}
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
-
 </body>
 </html>
-
