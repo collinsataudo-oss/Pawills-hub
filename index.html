@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawills Consulting Hub</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172b4d;
+    }
+
+    header {
+      background: white;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+    }
+
+    .brand h1 {
+      font-size: 20px;
+      color: #173d73;
+    }
+
+    .brand p {
+      color: #777;
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+
+    nav {
+      background: #173d73;
+      display: flex;
+      overflow-x: auto;
+      padding: 10px;
+      gap: 8px;
+    }
+
+    nav button {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 10px 14px;
+      white-space: nowrap;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    nav button:hover {
+      background: rgba(255,255,255,.15);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 25px 16px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #173d73, #315c9b);
+      color: white;
+      padding: 35px 22px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      line-height: 1.6;
+      max-width: 650px;
+    }
+
+    .section-title {
+      margin: 25px 0 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.07);
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      color: #173d73;
+    }
+
+    .card p {
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .icon {
+      font-size: 32px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 11px 18px;
+      background: #d81b72;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .announcement {
+      border-left: 5px solid #d81b72;
+      background: white;
+      padding: 18px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+    }
+
+    .announcement small {
+      color: #888;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 25px;
+      text-align: center;
+      background: #173d73;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 24px;
+      }
+
+      header {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="logo.png" class="logo" alt="Pawills Consulting Logo">
+
+  <div class="brand">
+    <h1>PAWILLS</h1>
+    <p>CONSULTING</p>
+  </div>
+</header>
+
+<nav>
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('curriculum')">Curriculum</button>
+  <button onclick="showSection('jobs')">Teacher Jobs</button>
+  <button onclick="showSection('announcements')">Announcements</button>
+  <button onclick="showSection('resources')">Resources</button>
+</nav>
+
+<main>
+
+  <section id="home">
+
+    <div class="hero">
+      <h2>Welcome to Pawills Consulting Hub</h2>
+
+      <p>
+        A digital hub created for educators. Find curriculum resources,
+        discover teaching opportunities, access useful educational materials
+        and stay updated with important announcements.
+      </p>
+
+      <a href="#curriculum" class="button"
+         onclick="showSection('curriculum')">
+        Explore Curriculum
+      </a>
+    </div>
+
+    <h2 class="section-title">What can you do here?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">📚</div>
+        <h3>Curriculum Library</h3>
+        <p>
+          Stop spending hours browsing for curriculum materials.
+          Find organized teaching resources in one place.
+        </p>
+        <button class="button"
+          onclick="showSection('curriculum')">
+          Browse Library
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icon">💼</div>
+        <h3>Teacher Jobs</h3>
+        <p>
+          Discover teaching opportunities and make it easier
+          to apply for available positions.
+        </p>
+        <button class="button"
+          onclick="showSection('jobs')">
+          Find Jobs
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icon">📢</div>
+        <h3>Announcements</h3>
+        <p>
+          Stay informed about important announcements,
+          training programs and opportunities for educators.
+        </p>
+        <button class="button"
+          onclick="showSection('announcements')">
+          View Updates
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icon">👨🏽‍🏫</div>
+        <h3>Teacher Resources</h3>
+        <p>
+          Access useful materials designed to make teaching
+          easier, smarter and more effective.
+        </p>
+        <button class="button"
+          onclick="showSection('resources')">
+          View Resources
+        </button>
+      </div><div class="card">
+    <div class="icon">🎓</div>
+    <h3>Google Classroom</h3>
+    <p>Create, manage and join online classes with Google Classroom.</p>
+    <a href="https://classroom.google.com/" target="_blank">
+        <button>Open Google Classroom</button>
+    </a>
+</div>
+
+
+    </div>
+
+  </section>
+
+
+  <section id="curriculum" style="display:none">
+
+    <h2 class="section-title">📚 Curriculum Library</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Mathematics</h3>
+        <p>Curriculum and teaching materials for Mathematics.</p>
+        <button class="button"
+          onclick="alert('Mathematics resources coming soon!')">
+          Open
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Basic Science</h3>
+        <p>Science curriculum resources for educators.</p>
+        <button class="button"
+          onclick="alert('Basic Science resources coming soon!')">
+          Open
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>English Language</h3>
+        <p>English teaching resources and curriculum materials.</p>
+        <button class="button"
+          onclick="alert('English resources coming soon!')">
+          Open
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="jobs" style="display:none">
+
+    <h2 class="section-title">💼 Teacher Job Opportunities</h2>
+
+    <div class="card">
+      <h3>Teaching opportunities</h3>
+
+      <p>
+        New teaching vacancies will appear here.
+        Teachers will be able to view job information
+        and apply for suitable positions.
+      </p>
+
+      <button class="button"
+        onclick="alert('Job application system coming soon!')">
+        Apply for a Job
+      </button>
+    </div>
+
+  </section>
+
+
+  <section id="announcements" style="display:none">
+
+    <h2 class="section-title">📢 Important Announcements</h2>
+
+    <div class="announcement">
+      <h3>Welcome Educators!</h3>
+      <p>
+        Pawills Consulting Hub is being developed to make
+        educational resources easier to access.
+      </p>
+      <small>Latest update</small>
+    </div>
+
+    <div class="announcement">
+      <h3>Teacher Training</h3>
+      <p>
+        Watch this space for upcoming teacher training
+        programs and educational opportunities.
+      </p>
+      <small>Coming soon</small>
+    </div>
+
+  </section>
+
+
+  <section id="resources" style="display:none">
+
+    <h2 class="section-title">👨🏽‍🏫 Teacher Resources</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3>Lesson Planning</h3>
+        <p>Tools and ideas to help teachers plan effective lessons.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎓</div>
+        <h3>Teaching Strategies</h3>
+        <p>Practical strategies for creating an engaging classroom.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">💻</div>
+        <h3>Digital Teaching</h3>
+        <p>Resources for using technology effectively in education.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+  <strong>PAWILLS CONSULTING</strong>
+  <p>Empowering educators through technology and resources.</p>
+</footer>
+
+
+<script>
+
+function showSection(sectionId) {
+
+  const sections = [
+    "home",
+    "curriculum",
+    "jobs",
+    "announcements",
+    "resources"
+  ];
+
+  sections.forEach(function(id) {
+    document.getElementById(id).style.display = "none";
+  });
+
+  document.getElementById(sectionId).style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+</script>
+
+</body>
+</html>
+
