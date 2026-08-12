@@ -193,7 +193,15 @@ footer{background:#173d73;color:#fff;text-align:center;padding:25px}
   </div>
 </section>
 
-<section id="login">
+<section id="login"><div class="card" style="margin-top:20px;">
+    <div class="icon">👑</div>
+    <h3>Admin Access</h3>
+    <p>Authorized Pawills administrators can access the management dashboard.</p>
+
+    <button class="btn" onclick="show('admin')">
+        Open Admin Dashboard
+    </button>
+</div>
   <h2 class="title">🔐 Teacher Login</h2>
   <div class="form">
     <div class="notice">This is a frontend demo only. It does not securely create real accounts yet.</div>
@@ -203,6 +211,88 @@ footer{background:#173d73;color:#fff;text-align:center;padding:25px}
     <p id="loginResult" style="margin-top:12px"></p>
     <p class="small">For real accounts, passwords must be handled by a secure authentication service. We will add that after the design is working.</p>
   </div>
+</section><section id="admin">
+
+    <h2 class="title">👑 Pawills Admin Dashboard</h2>
+
+    <div class="notice">
+        <strong>Administrator Control Panel</strong><br>
+        Manage Pawills Hub educational content and community features.
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Admin Slots</h3>
+            <p>Maximum administrators: <strong>5</strong></p>
+            <p>Slots currently available: <strong>5</strong></p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📚</div>
+            <h3>Manage Subjects</h3>
+            <p>Add, edit and organize subjects.</p>
+            <button class="btn">Manage Subjects</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏫</div>
+            <h3>Manage Classes</h3>
+            <p>Add Primary, JSS and SS classes.</p>
+            <button class="btn">Manage Classes</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📅</div>
+            <h3>Manage Terms</h3>
+            <p>Create First, Second and Third Term.</p>
+            <button class="btn">Manage Terms</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h3>Scheme of Work</h3>
+            <p>Create and update schemes of work.</p>
+            <button class="btn">Manage Schemes</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📁</div>
+            <h3>Resources</h3>
+            <p>Upload learning materials and documents.</p>
+            <button class="btn">Manage Resources</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">👨‍🏫</div>
+            <h3>Teachers</h3>
+            <p>Manage teacher accounts and permissions.</p>
+            <button class="btn">Manage Teachers</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h3>Complaints</h3>
+            <p>Review teacher complaints and support requests.</p>
+            <button class="btn">View Complaints</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📢</div>
+            <h3>Announcements</h3>
+            <p>Create important announcements for teachers.</p>
+            <button class="btn">Create Announcement</button>
+        </div>
+
+    </div>
+
+    <div class="notice" style="margin-top:20px;">
+        ⚠️ This dashboard is currently a design prototype.
+        Real administrator authentication will be connected before
+        sensitive information is stored online.
+    </div>
+
 </section>
 </main>
 
