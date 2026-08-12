@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawills Hub - Admin Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        header {
+            background: #172a5c;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 15px;
+        }
+
+        .notice {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,.08);
+        }
+
+        .slots {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .slot {
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            background: #e7edf8;
+        }
+
+        .slot.available {
+            background: #d9f7e8;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,.08);
+        }
+
+        .icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            margin: 8px 0;
+        }
+
+        .btn {
+            border: none;
+            padding: 11px 16px;
+            border-radius: 8px;
+            background: #172a5c;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            opacity: .9;
+        }
+
+        .logout {
+            background: #b42318;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>👑 Pawills Hub</h1>
+    <p>Administrator Dashboard</p>
+</header>
+
+<main class="container">
+
+    <div class="notice">
+        <h2>Welcome, Administrator</h2>
+        <p>
+            This dashboard is for managing Pawills Hub educational
+            content and community services.
+        </p>
+    </div>
+
+    <div class="notice">
+        <h2>👥 Admin Slots</h2>
+        <p><strong>Maximum administrators: 5</strong></p>
+
+        <div class="slots">
+            <div class="slot available">Admin 1<br>Available</div>
+            <div class="slot available">Admin 2<br>Available</div>
+            <div class="slot available">Admin 3<br>Available</div>
+            <div class="slot available">Admin 4<br>Available</div>
+            <div class="slot available">Admin 5<br>Available</div>
+        </div>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">📚</div>
+            <h3>Manage Subjects</h3>
+            <p>Add and organize subjects.</p>
+            <button class="btn">Open</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏫</div>
+            <h3>Manage Classes</h3>
+            <p>Manage Primary, JSS and SS classes.</p>
+            <button class="btn">Open</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📅</div>
+            <h3>Manage Terms</h3>
+            <p>Manage First, Second and Third Term.</p>
+            <button class="btn">Open</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h3>Scheme of Work</h3>
+            <p>Create and manage schemes of work.</p>
+            <button class="btn">Open</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📁</div>
+            <h3>Resources</h3>
+            <p>Manage teaching and learning materials.</p>
+            <button class="btn">Open</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">👨‍🏫</div>
+            <h3>Teachers</h3>
+            <p>Manage teacher accounts.</p>
+            <button class="btn">Open</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">💬</div>
+            <h3>Community</h3>
+            <p>Monitor teacher discussions.</p>
+            <button class="btn">Open</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h3>Complaints</h3>
+            <p>Review complaints and support requests.</p>
+            <button class="btn">Open</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📢</div>
+            <h3>Announcements</h3>
+            <p>Create announcements for teachers.</p>
+            <button class="btn">Open</button>
+        </div>
+
+    </div>
+
+    <div class="notice" style="margin-top:25px;">
+        <h3>⚠️ Security Notice</h3>
+        <p>
+            This is currently the dashboard interface.
+            Real administrator authentication and database
+            security will be connected before this is used
+            for real accounts.
+        </p>
+    </div>
+
+    <button class="btn logout" onclick="history.back()">
+        ← Back to Pawills Hub
+    </button>
+
+</main>
+
+<footer>
+    © 2026 Pawills Hub
+</footer>
+
+</body>
+  </html>
