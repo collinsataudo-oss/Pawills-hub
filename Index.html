@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173d73">
+<meta name="description" content="Pawills Hub - Education, Technology and Resources">
+<title>PAWILLS HUB</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f5f7fb;
+  color:#172b4d;
+  line-height:1.6;
+}
+
+header{
+  background:#fff;
+  padding:15px 18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 2px 10px #0001;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  border-radius:8px;
+}
+
+.brand h1{
+  font-size:22px;
+  color:#173d73;
+}
+
+.brand p{
+  font-size:11px;
+  letter-spacing:3px;
+  color:#777;
+}
+
+nav{
+  background:#173d73;
+  display:flex;
+  overflow-x:auto;
+  padding:9px;
+  gap:7px;
+  position:sticky;
+  top:82px;
+  z-index:90;
+}
+
+nav button{
+  background:transparent;
+  color:#fff;
+  border:0;
+  padding:10px 14px;
+  white-space:nowrap;
+  font-size:15px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+nav button:hover{
+  background:#ffffff22;
+}
+
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:25px 18px 60px;
+}
+
+section{
+  display:none;
+}
+
+section.active{
+  display:block;
+}
+
+.hero{
+  background:linear-gradient(135deg,#214f91,#315e9d);
+  color:#fff;
+  border-radius:24px;
+  padding:38px 28px;
+  margin-bottom:28px;
+}
+
+.hero h2{
+  font-size:32px;
+  margin-bottom:12px;
+}
+
+.hero p{
+  font-size:18px;
+  max-width:780px;
+}
+
+.btn{
+  display:inline-block;
+  background:#df1373;
+  color:#fff;
+  border:0;
+  border-radius:10px;
+  padding:12px 18px;
+  margin-top:15px;
+  font-size:15px;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.btn.secondary{
+  background:#173d73;
+}
+
+.btn.light{
+  background:#fff;
+  color:#173d73;
+}
+
+.btn.danger{
+  background:#b42318;
+}
+
+.title{
+  margin:10px 0 18px;
+  font-size:28px;
+  color:#173d73;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 5px 20px #0000000c;
+  margin-bottom:18px;
+}
+
+.card .icon{
+  font-size:35px;
+  margin-bottom:8px;
+}
+
+.card h3{
+  font-size:21px;
+  color:#173d73;
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#666;
+}
+
+.form{
+  background:#fff;
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 4px 15px #0001;
+  margin-bottom:20px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccd4e0;
+  border-radius:9px;
+  margin:7px 0 13px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+label{
+  font-weight:bold;
+  font-size:14px;
+}
+
+.notice{
+  background:#fff8e6;
+  border-left:5px solid #f2b400;
+  padding:14px;
+  border-radius:8px;
+  margin:15px 0;
+}
+
+.subject-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:12px;
+}
+
+.subject{
+  background:#fff;
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #0001;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.subject:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px #0002;
+}
+
+.subject strong{
+  display:block;
+  color:#173d73;
+  margin-top:5px;
+}
+
+.class-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:10px;
+}
+
+.class-btn{
+  background:#fff;
+  border:2px solid #e2e7ef;
+  border-radius:12px;
+  padding:14px;
+  cursor:pointer;
+  font-weight:bold;
+  color:#173d73;
+}
+
+.class-btn:hover{
+  border-color:#df1373;
+}
+
+.term-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+}
+
+.term{
+  background:#173d73;
+  color:#fff;
+  padding:18px;
+  border-radius:14px;
+  text-align:center;
+  cursor:pointer;
+}
+
+.term:hover{
+  background:#df1373;
+}
+
+.hidden{
+  display:none;
+}
+
+.chatbox{
+  background:#fff;
+  border-radius:18px;
+  padding:15px;
+  min-height:350px;
+  display:flex;
+  flex-direction:column;
+}
+
+.messages{
+  flex:1;
+  overflow:auto;
+  margin-bottom:10px;
+  min-height:240px;
+}
+
+.msg{
+  background:#eef3fb;
+  padding:10px 12px;
+  border-radius:12px;
+  margin:8px 0;
+  max-width:85%;
+}
+
+.msg.me{
+  margin-left:auto;
+  background:#173d73;
+  color:#fff;
+}
+
+.msg-name{
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:3px;
+  opacity:.8;
+}
+
+.chatrow{
+  display:flex;
+  gap:7px;
+}
+
+.chatrow input{
+  margin:0;
+}
+
+.chatrow button{
+  margin:0;
+}
+
+.job{
+  background:#fff;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:14px;
+  box-shadow:0 3px 15px #0001;
+}
+
+.job h3{
+  color:#173d73;
+  margin-bottom:5px;
+}
+
+.admin-badge{
+  display:inline-block;
+  background:#173d73;
+  color:#fff;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+footer{
+  background:#173d73;
+  color:#fff;
+  text-align:center;
+  padding:25px;
+}
+
+.small{
+  font-size:13px;
+  color:#666;
+}
+
+@media(max-width:600px){
+
+  .hero h2{
+    font-size:27px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  nav{
+    top:82px;
+  }
+
+  .chatrow{
+    flex-direction:column;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img
+    class="logo"
+    src="logo.png"
+    alt="Pawills Hub Logo"
+    onerror="this.style.display='none'"
+  >
+
+  <div class="brand">
+    <h1>PAWILLS HUB</h1>
+    <p>EDUCATION • TECHNOLOGY • RESOURCES</p>
+  </div>
+</header>
+
+<nav>
+  <button onclick="showPage('home')">Home</button>
+  <button onclick="showPage('scheme')">Scheme of Work</button>
+  <button onclick="showPage('classroom')">Classroom</button>
+  <button onclick="showPage('community')">Community</button>
+  <button onclick="showPage('jobs')">Jobs</button>
+  <button onclick="showPage('complaints')">Support</button>
+  <button onclick="showPage('login')">Login</button>
+</nav>
+
+<main>
+
+<section id="home" class="active">
+
+  <div class="hero">
+
+    <h2>Welcome to Pawills Hub 👋</h2>
+
+    <p>
+      A digital education platform for teachers and learners.
+      Access schemes of work, virtual classroom tools,
+      teaching opportunities and teacher community resources.
+    </p>
+
+    <button class="btn" onclick="showPage('scheme')">
+      Explore Scheme of Work
+    </button>
+
+    <button class="btn light" onclick="showPage('login')">
+      Teacher Login
+    </button>
+
+  </div>
+
+  <h2 class="title">What can you do here?</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">📚</div>
+      <h3>Scheme of Work</h3>
+      <p>
+        Browse subjects, classes and school terms.
+      </p>
+      <button class="btn" onclick="showPage('scheme')">
+        Browse Subjects
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h3>Virtual Classroom</h3>
+      <p>
+        Access classroom tools and learning resources.
+      </p>
+      <button class="btn" onclick="showPage('classroom')">
+        Enter Classroom
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">💬</div>
+      <h3>Teacher Community</h3>
+      <p>
+        Connect and communicate with other teachers.
+      </p>
+      <button class="btn" onclick="showPage('community')">
+        Open Community
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">💼</div>
+      <h3>Teaching Jobs</h3>
+      <p>
+        Find teaching opportunities around Nigeria.
+      </p>
+      <button class="btn" onclick="showPage('jobs')">
+        Find Jobs
+      </button>
+    </div>
+
+  </div>
+
+</section><section id="scheme">
+
+  <h2 class="title">📚 Scheme of Work</h2>
+
+  <div class="notice">
+    Select a class, then choose a term and subject to access
+    the available scheme of work.
+  </div>
+
+  <h3 style="margin:20px 0 12px;color:#173d73;">
+    Primary Classes
+  </h3>
+
+  <div class="class-grid">
+
+    <button class="class-btn" onclick="selectClass('Primary 1')">
+      Primary 1
+    </button>
+
+    <button class="class-btn" onclick="selectClass('Primary 2')">
+      Primary 2
+    </button>
+
+    <button class="class-btn" onclick="selectClass('Primary 3')">
+      Primary 3
+    </button>
+
+    <button class="class-btn" onclick="selectClass('Primary 4')">
+      Primary 4
+    </button>
+
+    <button class="class-btn" onclick="selectClass('Primary 5')">
+      Primary 5
+    </button>
+
+    <button class="class-btn" onclick="selectClass('Primary 6')">
+      Primary 6
+    </button>
+
+  </div>
+
+  <h3 style="margin:25px 0 12px;color:#173d73;">
+    Junior Secondary
+  </h3>
+
+  <div class="class-grid">
+
+    <button class="class-btn" onclick="selectClass('JSS 1')">
+      JSS 1
+    </button>
+
+    <button class="class-btn" onclick="selectClass('JSS 2')">
+      JSS 2
+    </button>
+
+    <button class="class-btn" onclick="selectClass('JSS 3')">
+      JSS 3
+    </button>
+
+  </div>
+
+  <h3 style="margin:25px 0 12px;color:#173d73;">
+    Senior Secondary
+  </h3>
+
+  <div class="class-grid">
+
+    <button class="class-btn" onclick="selectClass('SS 1')">
+      SS 1
+    </button>
+
+    <button class="class-btn" onclick="selectClass('SS 2')">
+      SS 2
+    </button>
+
+    <button class="class-btn" onclick="selectClass('SS 3')">
+      SS 3
+    </button>
+
+  </div>
+
+  <div id="schemeOptions" class="hidden">
+
+    <div class="card" style="margin-top:25px;">
+
+      <h3 id="selectedClass">
+        Select a class
+      </h3>
+
+      <p class="small">
+        Choose a term:
+      </p>
+
+      <div class="term-grid" style="margin-top:12px;">
+
+        <div class="term" onclick="selectTerm('First Term')">
+          📅<br>
+          First Term
+        </div>
+
+        <div class="term" onclick="selectTerm('Second Term')">
+          📅<br>
+          Second Term
+        </div>
+
+        <div class="term" onclick="selectTerm('Third Term')">
+          📅<br>
+          Third Term
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="subjectOptions" class="hidden">
+
+    <div class="card">
+
+      <h3 id="selectedTerm">
+        Select a term
+      </h3>
+
+      <p class="small">
+        Choose a subject:
+      </p>
+
+      <div class="subject-grid" style="margin-top:15px;">
+
+        <div class="subject" onclick="openSubject('English Language')">
+          📖
+          <strong>English Language</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Mathematics')">
+          ➗
+          <strong>Mathematics</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Basic Science')">
+          🔬
+          <strong>Basic Science</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Social Studies')">
+          🌍
+          <strong>Social Studies</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Chemistry')">
+          🧪
+          <strong>Chemistry</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Physics')">
+          ⚛️
+          <strong>Physics</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Biology')">
+          🧬
+          <strong>Biology</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Computer Studies')">
+          💻
+          <strong>Computer Studies</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Economics')">
+          💰
+          <strong>Economics</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Government')">
+          🏛️
+          <strong>Government</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('History')">
+          📜
+          <strong>History</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Geography')">
+          🗺️
+          <strong>Geography</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Commerce')">
+          📈
+          <strong>Commerce</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Accounting')">
+          📒
+          <strong>Accounting</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Cultural and Creative Arts')">
+          🎨
+          <strong>Cultural & Creative Arts</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Religious Studies')">
+          🕌
+          <strong>Christian / Islamic Religious Studies</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Physical and Health Education')">
+          🏃
+          <strong>Physical & Health Education</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Agricultural Science')">
+          🌱
+          <strong>Agricultural Science</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Home Economics')">
+          👨‍🍳
+          <strong>Home Economics</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('Basic Technology')">
+          🔧
+          <strong>Basic Technology</strong>
+        </div>
+
+        <div class="subject" onclick="openSubject('French')">
+          🗣️
+          <strong>French</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="subjectWelcome" class="card hidden">
+
+    <div class="icon">🎓</div>
+
+    <h2 id="subjectTitle">
+      Welcome to Pawills Class
+    </h2>
+
+    <p id="subjectIntroduction">
+      Welcome to this Pawills learning class.
+    </p>
+
+    <div class="notice">
+
+      <strong>Selected learning path:</strong>
+
+      <br><br>
+
+      Class:
+      <span id="pathClass">—</span>
+
+      <br>
+
+      Term:
+      <span id="pathTerm">—</span>
+
+      <br>
+
+      Subject:
+      <span id="pathSubject">—</span>
+
+    </div>
+
+    <p>
+      The scheme uploaded by the Pawills administrator
+      will appear here when it becomes available.
+    </p>
+
+    <button class="btn secondary" onclick="showPage('login')">
+      Teacher Login
+    </button>
+
+  </div>
+
+</section><!-- PART 3: SUBJECT INTRODUCTIONS + SCHEME UPLOAD -->
+
+<section id="subjectManager">
+
+  <h2 class="title">📚 Subject Introduction</h2>
+
+  <div class="card">
+
+    <h3 id="managerSubjectTitle">Welcome to Pawills Class</h3>
+
+    <p id="managerSubjectText">
+      Welcome to your Pawills learning class. Select a subject
+      from the Scheme of Work section to view its introduction.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section id="uploadScheme">
+
+  <h2 class="title">📤 Upload Scheme of Work</h2>
+
+  <div class="notice">
+    <strong>Administrator only</strong><br>
+    Select a class, term, subject and scheme file.
+    The administrator will be able to manage uploaded schemes
+    from the Admin Dashboard.
+  </div>
+
+  <div class="form">
+
+    <label>Class</label>
+
+    <select id="uploadClass">
+
+      <option value="">Select Class</option>
+
+      <option>Primary 1</option>
+      <option>Primary 2</option>
+      <option>Primary 3</option>
+      <option>Primary 4</option>
+      <option>Primary 5</option>
+      <option>Primary 6</option>
+
+      <option>JSS 1</option>
+      <option>JSS 2</option>
+      <option>JSS 3</option>
+
+      <option>SS 1</option>
+      <option>SS 2</option>
+      <option>SS 3</option>
+
+    </select>
+
+
+    <label>Term</label>
+
+    <select id="uploadTerm">
+
+      <option value="">Select Term</option>
+
+      <option>First Term</option>
+      <option>Second Term</option>
+      <option>Third Term</option>
+
+    </select>
+
+
+    <label>Subject</label>
+
+    <select id="uploadSubject">
+
+      <option value="">Select Subject</option>
+
+      <option>English Language</option>
+      <option>Mathematics</option>
+      <option>Basic Science</option>
+      <option>Social Studies</option>
+      <option>Chemistry</option>
+      <option>Physics</option>
+      <option>Biology</option>
+      <option>Computer Studies</option>
+      <option>Economics</option>
+      <option>Government</option>
+      <option>History</option>
+      <option>Geography</option>
+      <option>Commerce</option>
+      <option>Accounting</option>
+      <option>Cultural and Creative Arts</option>
+      <option>Religious Studies</option>
+      <option>Physical and Health Education</option>
+      <option>Agricultural Science</option>
+      <option>Home Economics</option>
+      <option>Basic Technology</option>
+      <option>French</option>
+
+    </select>
+
+
+    <label>Scheme File</label>
+
+    <input
+      type="file"
+      id="schemeFile"
+      accept=".pdf,.doc,.docx,.xls,.xlsx"
+    >
+
+
+    <button
+      class="btn"
+      onclick="uploadScheme()"
+    >
+      📤 Upload Scheme
+    </button>
+
+
+    <div
+      id="uploadResult"
+      class="notice"
+      style="display:none;"
+    ></div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>📁 Uploaded Schemes</h3>
+
+    <div id="uploadedSchemes">
+
+      <p class="small">
+        No schemes have been uploaded yet.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="subjectIntro">
+
+  <h2 class="title">🎓 Pawills Learning Class</h2>
+
+  <div class="hero">
+
+    <h2 id="introHeading">
+      Welcome to Pawills Class
+    </h2>
+
+    <p id="introDescription">
+      Welcome to your Pawills learning environment.
+      Here you can access learning materials, schemes of work
+      and educational resources.
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <h3>📚 About this subject</h3>
+
+    <p id="introDetails">
+      Your teacher and Pawills administrators will provide
+      learning materials and schemes for this subject.
+    </p>
+
+  </div>
+
+  <button
+    class="btn secondary"
+    onclick="showPage('scheme')"
+  >
+    ← Back to Scheme of Work
+  </button>
+
+</section>https://classroom.google.com/<!-- PART 4: VIRTUAL CLASSROOM -->
+
+<section id="classroom">
+
+  <h2 class="title">🎓 Pawills Virtual Classroom</h2>
+
+  <div class="notice">
+    Welcome to the Pawills Virtual Classroom.
+    Teachers can use these tools to support their lessons.
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+
+      <div class="icon">🌍</div>
+
+      <h3>Language Translator</h3>
+
+      <p>
+        Translate common Hausa, Yoruba and Igbo phrases
+        into English.
+      </p>
+
+      <label>Language</label>
+
+      <select id="languageSelect">
+
+        <option value="hausa">Hausa</option>
+        <option value="yoruba">Yoruba</option>
+        <option value="igbo">Igbo</option>
+
+      </select>
+
+      <label>Phrase</label>
+
+      <textarea
+        id="translationInput"
+        placeholder="Enter a phrase..."
+      ></textarea>
+
+      <button
+        class="btn"
+        onclick="translateText()"
+      >
+        Translate
+      </button>
+
+      <div
+        id="translationResult"
+        class="notice"
+      >
+        Translation will appear here.
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">🏫</div>
+
+      <h3>Google Classroom</h3>
+
+      <p>
+        Open Google Classroom for lessons,
+        assignments and learning materials.
+      </p>
+
+      <a
+        class="btn"
+        href="https://classroom.google.com/"
+        target="_blank"
+        rel="noopener"
+      >
+        Open Google Classroom
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="icon">🖊️</div>
+
+    <h3>Classroom Notes</h3>
+
+    <p>
+      Teachers can prepare notes and explanations here.
+    </p>
+
+    <textarea
+      id="classNotes"
+      placeholder="Write your classroom notes..."
+    ></textarea>
+
+    <button
+      class="btn"
+      onclick="saveNotes()"
+    >
+      Save Notes
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="loadNotes()"
+    >
+      Load Notes
+    </button>
+
+    <div
+      id="notesResult"
+      class="notice"
+      style="display:none;"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- PART 4: TEACHER COMMUNITY -->
+
+<section id="community">
+
+  <h2 class="title">💬 Pawills Teacher Community</h2>
+
+  <div class="notice">
+
+    <strong>Teacher Community</strong><br>
+
+    Teachers can communicate, share ideas and discuss
+    educational matters here.
+
+    <br><br>
+
+    Your registered email will be displayed with your messages.
+
+  </div>
+
+
+  <div class="chatbox">
+
+    <div
+      id="chatStatus"
+      class="small"
+      style="margin-bottom:10px;"
+    >
+      Community chat
+    </div>
+
+
+    <div
+      class="messages"
+      id="messages"
+    >
+
+      <div class="msg">
+
+        <div class="msg-name">
+          Pawills Hub
+        </div>
+
+        <div class="msg-text">
+          Welcome to the Pawills Hub community chat.
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="chat-input">
+
+      <input
+        id="chatMessage"
+        type="text"
+        placeholder="Write a message..."
+      >
+
+      <button
+        class="btn"
+        onclick="sendChatMessage()"
+      >
+        Send
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     JOBS SECTION
+========================================= -->
+
+<section id="jobs">
+
+  <h2 class="title">💼 Teaching Jobs</h2>
+
+  <p>
+    Find teaching opportunities and school vacancies.
+  </p>
+
+  <div class="card">
+
+    <h3>🔎 Find Teaching Jobs</h3>
+
+    <p>
+      Search for teaching opportunities around Nigeria.
+    </p>
+
+    <input
+      id="jobSearch"
+      type="text"
+      placeholder="Example: Mathematics teacher"
+    >
+
+    <button
+      class="btn"
+      onclick="searchJobs()"
+    >
+      Search Jobs
+    </button>
+
+  </div>
+
+
+  <div id="jobResults">
+
+    <div class="card">
+
+      <h3>📢 Job Opportunities</h3>
+
+      <p>
+        Job results will appear here.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     LOGIN SECTION
+========================================= -->
+
+<section id="login">
+
+  <h2 class="title">🔐 Teacher Login</h2>
+
+  <div class="card">
+
+    <label>Email Address</label>
+
+    <input
+      id="loginEmail"
+      type="email"
+      placeholder="Enter your email"
+    >
+
+    <label>Password</label>
+
+    <input
+      id="loginPassword"
+      type="password"
+      placeholder="Enter your password"
+    >
+
+    <button
+      class="btn"
+      onclick="loginTeacher()"
+    >
+      Login
+    </button>
+
+    <p id="loginStatus"></p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     REGISTER SECTION
+========================================= -->
+
+<section id="register">
+
+  <h2 class="title">📝 Teacher Registration</h2>
+
+  <div class="card">
+
+    <label>Email Address</label>
+
+    <input
+      id="registerEmail"
+      type="email"
+      placeholder="Enter your email"
+    >
+
+    <label>Password</label>
+
+    <input
+      id="registerPassword"
+      type="password"
+      placeholder="Create a password"
+    >
+
+    <button
+      class="btn"
+      onclick="registerTeacher()"
+    >
+      Create Account
+    </button>
+
+    <p id="registerStatus"></p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================
+     ADMIN DASHBOARD
+========================================= -->
+
+<section id="admin">
+
+  <h2 class="title">⚙️ Admin Dashboard</h2>
+
+  <p>
+    Administrator control panel for Pawills Hub.
+  </p>
+
+
+  <div class="grid">
+
+    <div class="card">
+
+      <h3>👥 Teachers</h3>
+
+      <p>
+        Manage registered teachers.
+      </p>
+
+      <button
+        class="btn"
+        onclick="loadTeachers()"
+      >
+        View Teachers
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>📚 Scheme of Work</h3>
+
+      <p>
+        Upload and manage schemes of work.
+      </p>
+
+      <input
+        id="schemeFile"
+        type="file"
+        accept=".pdf,.doc,.docx,.txt"
+      >
+
+      <button
+        class="btn"
+        onclick="uploadScheme()"
+      >
+        Upload Scheme
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>📢 Announcements</h3>
+
+      <input
+        id="adminAnnouncement"
+        type="text"
+        placeholder="Write announcement"
+      >
+
+      <button
+        class="btn"
+        onclick="publishAnnouncement()"
+      >
+        Publish
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div id="adminOutput"></div>
+
+</section>
+
+
+<!-- =========================================
+     FINAL JAVASCRIPT
+========================================= -->
+
+<script>
+
+function sendChatMessage() {
+
+  const input =
+    document.getElementById("chatMessage");
+
+  const message =
+    input.value.trim();
+
+  if (!message) {
+
+    alert("Please write a message.");
+
+    return;
+
+  }
+
+
+  const messages =
+    document.getElementById("messages");
+
+
+  const currentUser =
+    localStorage.getItem("pawillsUserEmail")
+    || "Teacher";
+
+
+  const messageBox =
+    document.createElement("div");
+
+  messageBox.className = "msg";
+
+
+  messageBox.innerHTML = `
+
+    <div class="msg-name">
+      ${escapeHTML(currentUser)}
+    </div>
+
+    <div class="msg-text">
+      ${escapeHTML(message)}
+    </div>
+
+  `;
+
+
+  messages.appendChild(messageBox);
+
+  input.value = "";
+
+}
+
+
+
+function escapeHTML(text) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent = text;
+
+  return div.innerHTML;
+
+}
+
+
+
+function searchJobs() {
+
+  const search =
+    document.getElementById("jobSearch").value.trim();
+
+  const results =
+    document.getElementById("jobResults");
+
+
+  if (!search) {
+
+    alert("Enter the type of teaching job you want.");
+
+    return;
+
+  }
+
+
+  results.innerHTML = `
+
+    <div class="card">
+
+      <h3>🔎 Search request</h3>
+
+      <p>
+        Searching for:
+        <strong>${escapeHTML(search)}</strong>
+      </p>
+
+      <p>
+        Internet job searching will be connected
+        to a real job-search service in the next stage.
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+
+function registerTeacher() {
+
+  const email =
+    document.getElementById("registerEmail").value.trim();
+
+  const password =
+    document.getElementById("registerPassword").value;
+
+
+  if (!email || !password) {
+
+    document.getElementById("registerStatus").textContent =
+      "Please enter your email and password.";
+
+    return;
+
+  }
+
+
+  localStorage.setItem(
+    "pawillsUserEmail",
+    email
+  );
+
+
+  localStorage.setItem(
+    "pawillsUserPassword",
+    password
+  );
+
+
+  document.getElementById("registerStatus").textContent =
+    "Account created successfully.";
+
+}
+
+
+
+function loginTeacher() {
+
+  const email =
+    document.getElementById("loginEmail").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+
+  const savedEmail =
+    localStorage.getItem("pawillsUserEmail");
+
+  const savedPassword =
+    localStorage.getItem("pawillsUserPassword");
+
+
+  if (
+    email === savedEmail &&
+    password === savedPassword
+  ) {
+
+    localStorage.setItem(
+      "pawillsLoginTime",
+      Date.now()
+    );
+
+
+    document.getElementById("loginStatus").textContent =
+      "Login successful. Welcome to Pawills Hub.";
+
+  }
+
+  else {
+
+    document.getElementById("loginStatus").textContent =
+      "Incorrect email or password.";
+
+  }
+
+}
+
+
+
+function uploadScheme() {
+
+  const file =
+    document.getElementById("schemeFile").files[0];
+
+
+  if (!file) {
+
+    alert("Please select a scheme of work first.");
+
+    return;
+
+  }
+
+
+  document.getElementById("adminOutput").innerHTML = `
+
+    <div class="card">
+
+      <h3>✅ Scheme Selected</h3>
+
+      <p>
+        ${escapeHTML(file.name)}
+      </p>
+
+      <small>
+        Real cloud storage will be connected in the next stage.
+      </small>
+
+    </div>
+
+  `;
+
+}
+
+
+
+function publishAnnouncement() {
+
+  const announcement =
+    document.getElementById("adminAnnouncement").value.trim();
+
+
+  if (!announcement) {
+
+    alert("Write an announcement first.");
+
+    return;
+
+  }
+
+
+  localStorage.setItem(
+    "pawillsAnnouncement",
+    announcement
+  );
+
+
+  document.getElementById("adminOutput").innerHTML = `
+
+    <div class="card">
+
+      <h3>📢 Announcement Published</h3>
+
+      <p>
+        ${escapeHTML(announcement)}
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+
+function loadTeachers() {
+
+  const output =
+    document.getElementById("adminOutput");
+
+
+  const email =
+    localStorage.getItem("pawillsUserEmail");
+
+
+  output.innerHTML = `
+
+    <div class="card">
+
+      <h3>👤 Registered Teacher</h3>
+
+      <p>
+        ${email ? escapeHTML(email) : "No teacher registered yet."}
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+
+function uploadScheme() {
+
+  const file =
+    document.getElementById("schemeFile").files[0];
+
+
+  if (!file) {
+
+    alert("Select a scheme of work first.");
+
+    return;
+
+  }
+
+
+  const output =
+    document.getElementById("adminOutput");
+
+
+  output.innerHTML = `
+
+    <div class="card">
+
+      <h3>✅ Upload Ready</h3>
+
+      <p>
+        ${escapeHTML(file.name)}
+      </p>
+
+      <p>
+        The file has been selected successfully.
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+</script>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+  <strong>PAWILLS HUB</strong>
+
+  <br><br>
+
+  Empowering educators through technology and resources.
+
+  <br><br>
+
+  Education • Technology • Resources
+
+  <br><br>
+
+  © 2026 Pawills Hub. All rights reserved.
+
+</footer>
+
+
+</body>
+
+</html>
