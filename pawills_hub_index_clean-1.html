@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173d73">
+<meta name="description" content="Pawills Hub - Education, technology and resources for teachers.">
+<link rel="manifest" href="manifest.json">
+<title>Pawills Hub</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f5f7fb;color:#172b4d;line-height:1.6}
+header{background:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px #0001;position:sticky;top:0;z-index:20}
+.logo{width:52px;height:52px;object-fit:contain;border-radius:8px}
+.brand h1{font-size:21px;color:#173d73}.brand p{font-size:11px;letter-spacing:3px;color:#777}
+nav{background:#173d73;display:flex;overflow-x:auto;padding:9px;gap:7px;position:sticky;top:80px;z-index:19}
+nav button{background:transparent;color:#fff;border:0;padding:10px 13px;white-space:nowrap;font-size:14px;border-radius:8px;cursor:pointer}
+nav button:hover{background:#ffffff22}
+main{max-width:1100px;margin:auto;padding:24px 18px 55px}
+section{display:none}.active{display:block}
+.hero{background:linear-gradient(135deg,#214f91,#315e9d);color:#fff;border-radius:24px;padding:34px 28px;margin-bottom:28px}
+.hero h2{font-size:31px;margin-bottom:12px}.hero p{font-size:18px;max-width:780px}
+.btn{display:inline-block;background:#df1373;color:#fff;border:0;border-radius:10px;padding:11px 17px;margin-top:12px;font-size:15px;text-decoration:none;cursor:pointer}
+.btn.secondary{background:#173d73}.btn.light{background:#fff;color:#173d73}
+.btn.danger{background:#b42318}
+h2.title{margin:10px 0 18px;font-size:28px}
+h3{color:#173d73}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 5px 20px #0000000c}
+.card .icon{font-size:34px;margin-bottom:8px}.card h3{font-size:20px;margin-bottom:7px}.card p{color:#666}
+.form{background:#fff;padding:22px;border-radius:18px;box-shadow:0 4px 15px #0001;margin-bottom:20px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccd4e0;border-radius:9px;margin:7px 0 13px;font-size:15px;background:#fff}
+textarea{min-height:120px;resize:vertical}label{font-weight:bold;font-size:14px}
+.notice{background:#fff8e6;border-left:5px solid #f2b400;padding:14px;border-radius:8px;margin:15px 0}
+.small{font-size:13px;color:#666}.hidden{display:none!important}
+.subjects{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.subject{background:#fff;padding:17px;border-radius:14px;box-shadow:0 2px 10px #0001;cursor:pointer;transition:.15s}
+.subject:hover{transform:translateY(-2px);box-shadow:0 5px 15px #0002}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.toolbar button{padding:9px 12px;border:1px solid #ccd4e0;border-radius:8px;background:#fff;cursor:pointer}
+.breadcrumb{font-size:14px;color:#666;margin-bottom:12px}
+.pill{display:inline-block;background:#e9f1ff;color:#173d73;padding:5px 9px;border-radius:999px;font-size:12px;margin:3px}
+.chatbox{background:#fff;border-radius:18px;padding:15px;min-height:360px;display:flex;flex-direction:column;box-shadow:0 4px 15px #0001}
+.messages{flex:1;overflow:auto;margin-bottom:10px;min-height:250px}
+.msg{background:#eef3fb;padding:10px 12px;border-radius:12px;margin:8px 0;max-width:85%}
+.msg.me{margin-left:auto;background:#173d73;color:#fff}
+.msg .sender{font-size:12px;font-weight:bold;margin-bottom:3px}
+.chatrow{display:flex;gap:7px}.chatrow input{margin:0}.chatrow button{margin:0}
+.job{background:#fff;border-radius:16px;padding:18px;box-shadow:0 3px 15px #0001;margin:12px 0}
+.job h3{margin-bottom:5px}.job p{margin:3px 0;color:#666}
+.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.stat{font-size:27px;font-weight:bold;color:#173d73}
+.table-wrap{overflow:auto;background:#fff;border-radius:14px;box-shadow:0 3px 15px #0001}
+table{width:100%;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid #e5e9f0;text-align:left}
+#board{width:100%;height:430px;background:#fff;border:2px solid #ccd4e0;border-radius:15px;touch-action:none}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.tools button{padding:9px 12px;border:1px solid #ccd4e0;border-radius:8px;background:#fff;cursor:pointer}
+footer{background:#173d73;color:#fff;text-align:center;padding:25px}
+.install{display:none;background:#e9f1ff;padding:14px;border-radius:12px;margin:15px 0}
+@media(max-width:600px){.hero h2{font-size:26px}.hero p{font-size:16px}nav{top:80px}}
+</style>
+</head>
+<body>
+
+<header>
+  <img class="logo" src="logo.png" alt="Pawills Hub logo" onerror="this.style.display='none'">
+  <div class="brand"><h1>PAWILLS HUB</h1><p>EDUCATION • TECHNOLOGY • RESOURCES</p></div>
+</header>
+
+<nav>
+  <button onclick="show('home')">Home</button>
+  <button onclick="show('scheme')">📚 Scheme</button>
+  <button onclick="show('classroom')">🎓 Classroom</button>
+  <button onclick="show('jobs')">💼 School Jobs</button>
+  <button onclick="show('community')">💬 Community</button>
+  <button onclick="show('complaints')">📝 Support</button>
+  <button onclick="show('login')">🔐 Login</button>
+  <button id="adminNav" class="hidden" onclick="show('admin')">👑 Admin</button>
+</nav>
+
+<main>
+
+<section id="home" class="active">
+  <div class="hero">
+    <h2>Welcome to Pawills Hub</h2>
+    <p>A digital hub for educators: explore schemes of work, learning resources, virtual classroom tools, teacher community features and school job opportunities.</p>
+    <button class="btn light" onclick="show('scheme')">Explore Scheme of Work</button>
+  </div>
+
+  <div id="installBox" class="install">
+    <b>📱 Install Pawills Hub</b><br>
+    Add Pawills Hub to your phone when your browser offers the install option.
+    <br><button class="btn" onclick="installApp()">Install App</button>
+  </div>
+
+  <h2 class="title">What can you do here?</h2>
+  <div class="cards">
+    <div class="card"><div class="icon">📚</div><h3>Scheme of Work</h3><p>Choose a subject, class and term to access a scheme.</p><button class="btn" onclick="show('scheme')">Browse</button></div>
+    <div class="card"><div class="icon">👑</div><h3>Admin Dashboard</h3><p>Authorized administrators manage educational content and platform settings.</p><button class="btn" onclick="show('login')">Admin Login</button></div>
+    <div class="card"><div class="icon">💼</div><h3>School Jobs</h3><p>Find publicly listed teaching opportunities around Nigeria.</p><button class="btn" onclick="show('jobs')">Find Jobs</button></div>
+    <div class="card"><div class="icon">💬</div><h3>Teacher Community</h3><p>Chat with other teachers using your verified account email.</p><button class="btn" onclick="show('community')">Community</button></div>
+  </div>
+</section>
+
+<section id="scheme">
+  <h2 class="title">📚 Scheme of Work</h2>
+  <div id="schemeIntro" class="notice">Select a subject to begin.</div>
+
+  <div id="subjectGrid" class="subjects"></div>
+
+  <div id="schemeBrowser" class="hidden">
+    <div class="breadcrumb" id="schemeBreadcrumb"></div>
+    <div class="form">
+      <label>Class</label>
+      <select id="classSelect" onchange="renderTerms()"></select>
+      <label>Term</label>
+      <select id="termSelect"></select>
+      <button class="btn" onclick="openSelectedScheme()">Open Scheme</button>
+      <button class="btn secondary" onclick="backToSubjects()">Change Subject</button>
+    </div>
+    <div id="schemeContent" class="card hidden"></div>
+  </div>
+
+  <div id="adminUploadBox" class="form hidden">
+    <h3>⬆️ Upload Scheme</h3>
+    <p class="small">Admin upload area. A real online file-storage backend must be connected before uploaded files are shared with all teachers.</p>
+    <label>Subject</label><select id="uploadSubject"></select>
+    <label>Class</label><select id="uploadClass"></select>
+    <label>Term</label><select id="uploadTerm"></select>
+    <label>Scheme file</label><input id="schemeFile" type="file" accept=".pdf,.doc,.docx,.xlsx,.xls,.txt">
+    <button class="btn" onclick="prepareUpload()">Add to Admin Upload Queue</button>
+    <div id="uploadResult" class="notice hidden"></div>
+  </div>
+</section>
+
+<section id="classroom">
+  <h2 class="title">🎓 Pawills Virtual Classroom</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🌍</div><h3>Nigerian Language Translator</h3>
+      <p>Translate a small set of common Hausa, Yoruba and Igbo phrases.</p>
+      <select id="lang"><option value="hausa">Hausa</option><option value="yoruba">Yoruba</option><option value="igbo">Igbo</option></select>
+      <textarea id="phrase" placeholder="Enter a phrase..."></textarea>
+      <button class="btn" onclick="translatePhrase()">Translate</button>
+      <div class="notice" id="translation">Translation will appear here.</div>
+    </div>
+    <div class="card">
+      <div class="icon">🧑‍🏫</div><h3>Google Classroom</h3>
+      <p>Open Google Classroom for classes, assignments and learning materials.</p>
+      <a class="btn" href="https://classroom.google.com/" target="_blank" rel="noopener">Open Google Classroom</a>
+    </div>
+  </div>
+
+  <h2 class="title" style="margin-top:30px">🖊️ Drawing Board</h2>
+  <p>Use the board for explanations and diagrams.</p>
+  <div class="tools"><button onclick="clearBoard()">Clear</button><button onclick="setEraser()">Eraser</button><button onclick="setPen()">Pen</button></div>
+  <canvas id="board"></canvas>
+</section>
+
+<section id="jobs">
+  <h2 class="title">💼 Nigerian School Jobs</h2>
+  <div class="notice">
+    Search tools can help you find publicly listed vacancies. Pawills Hub will not automatically submit applications to third-party school portals without the teacher reviewing and approving the application.
+  </div>
+  <div class="form">
+    <label>Search location</label>
+    <input id="jobLocation" value="Nigeria" placeholder="e.g. Lagos, Abuja, Enugu">
+    <label>Job keyword</label>
+    <input id="jobKeyword" value="teacher" placeholder="e.g. mathematics teacher">
+    <button class="btn" onclick="searchJobs()">Search Web for School Jobs</button>
+  </div>
+  <div id="jobResults"></div>
+</section>
+
+<section id="community">
+  <h2 class="title">💬 Teacher Community</h2>
+  <div id="chatLoginNotice" class="notice">Log in with a teacher account to send messages. Your verified email will be shown as your display name.</div>
+  <div class="chatbox">
+    <div class="messages" id="messages">
+      <div class="msg"><div class="sender">Pawills Hub</div>Welcome to the teacher community! 👋</div>
+    </div>
+    <div class="chatrow">
+      <input id="chatInput" placeholder="Write a message..." disabled>
+      <button class="btn" onclick="sendMessage()" disabled id="sendChatBtn">Send</button>
+    </div>
+  </div>
+</section>
+
+<section id="complaints">
+  <h2 class="title">📝 Complaints & Support</h2>
+  <div class="form">
+    <label>Your name</label><input id="complaintName" placeholder="Name">
+    <label>Email or phone</label><input id="complaintContact" placeholder="Contact">
+    <label>Complaint / request</label><textarea id="complaintText" placeholder="Tell Pawills what happened or what help you need..."></textarea>
+    <button class="btn" onclick="submitComplaint()">Submit Complaint</button>
+    <div id="complaintResult" class="notice hidden"></div>
+  </div>
+</section>
+
+<section id="login">
+  <h2 class="title">🔐 Pawills Account</h2>
+  <div class="form">
+    <div class="notice">This page is structured for real email authentication. The secure authentication service must be connected before passwords are stored or accounts are treated as verified.</div>
+    <label>Email</label><input id="email" type="email" autocomplete="email" placeholder="teacher@example.com">
+    <label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Password">
+    <button class="btn" onclick="login()">Login</button>
+    <button class="btn secondary" onclick="register()">Create Account</button>
+    <button class="btn" onclick="logout()">Logout</button>
+    <p id="loginResult" style="margin-top:12px"></p>
+    <p class="small">Planned session policy: keep a verified login for up to 7 days, then require sign-in again.</p>
+  </div>
+
+  <div class="card">
+    <h3>👑 Administrator</h3>
+    <p>Only authorized administrators should access the admin dashboard. Maximum planned admin accounts: <strong>5</strong>.</p>
+    <button class="btn" onclick="adminLoginNotice()">Open Admin Dashboard</button>
+  </div>
+</section>
+
+<section id="admin">
+  <h2 class="title">👑 Pawills Admin Dashboard</h2>
+  <div class="notice"><strong>Administrator Control Panel</strong><br>Manage educational content, teachers, schemes, complaints and announcements.</div>
+
+  <div class="admin-grid">
+    <div class="card"><div class="icon">👥</div><h3>Admin Slots</h3><div class="stat">5</div><p>Maximum administrators</p></div>
+    <div class="card"><div class="icon">👨‍🏫</div><h3>Teachers</h3><div class="stat" id="teacherCount">0</div><p>Accounts visible to admin after backend connection.</p></div>
+    <div class="card"><div class="icon">📚</div><h3>Schemes</h3><div class="stat" id="schemeCount">0</div><p>Uploaded scheme records in this prototype.</p></div>
+    <div class="card"><div class="icon">📝</div><h3>Complaints</h3><div class="stat" id="complaintCount">0</div><p>Support records.</p></div>
+  </div>
+
+  <div class="cards" style="margin-top:20px">
+    <div class="card"><h3>📚 Manage Subjects</h3><p>Add or organize the subject library.</p><button class="btn" onclick="show('scheme')">Open Subjects</button></div>
+    <div class="card"><h3>🏫 Manage Classes</h3><p>Primary 1–6, JSS 1–3 and SS 1–3.</p><button class="btn" onclick="show('scheme')">Manage Classes</button></div>
+    <div class="card"><h3>📅 Manage Terms</h3><p>First, Second and Third Term.</p><button class="btn" onclick="show('scheme')">Manage Terms</button></div>
+    <div class="card"><h3>⬆️ Upload Scheme</h3><p>Upload a scheme record for a subject, class and term.</p><button class="btn" onclick="openAdminUpload()">Upload Scheme</button></div>
+    <div class="card"><h3>👨‍🏫 Teachers</h3><p>Review teacher accounts and permissions.</p><button class="btn" onclick="alert('Teacher management will be connected to the authentication database.')">Manage Teachers</button></div>
+    <div class="card"><h3>📝 Complaints</h3><p>Review teacher support requests.</p><button class="btn" onclick="show('complaints')">View Complaints</button></div>
+    <div class="card"><h3>📢 Announcements</h3><p>Prepare announcements for teachers.</p><button class="btn" onclick="alert('Announcement publishing will be connected to the backend.')">Create Announcement</button></div>
+    <div class="card"><h3>⚙️ Platform Control</h3><p>Admin controls will be protected by server-side role permissions.</p><button class="btn" onclick="alert('Server-side admin permissions required.')">Settings</button></div>
+  </div>
+
+  <div class="form" style="margin-top:20px">
+    <h3>📋 Upload Queue</h3>
+    <div id="uploadQueue"><p class="small">No scheme records added in this browser yet.</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer><strong>PAWILLS HUB</strong><br>Empowering educators through technology and resources.</footer>
+
+<script>
+const SUBJECTS = [
+ ["english","📖 English Language","Welcome to Pawills English Language Class! Build strong reading, writing, grammar, speaking and comprehension skills."],
+ ["mathematics","➗ Mathematics","Welcome to Pawills Mathematics Class! Learn mathematics step by step through clear explanations, practice and problem solving."],
+ ["basic-science","🔬 Basic Science","Welcome to Pawills Basic Science Class! Explore living things, matter, energy, health and the world around you."],
+ ["social-studies","🌍 Social Studies","Welcome to Pawills Social Studies Class! Learn about society, citizenship, culture, relationships and responsible living."],
+ ["chemistry","🧪 Chemistry","Welcome to Pawills Chemistry Class! Explore matter, reactions, elements, compounds and practical chemistry."],
+ ["physics","⚛️ Physics","Welcome to Pawills Physics Class! Discover motion, forces, energy, electricity, waves and the physical world."],
+ ["biology","🧬 Biology","Welcome to Pawills Biology Class! Study living organisms, cells, systems, ecology and life processes."],
+ ["computer-studies","💻 Computer Studies","Welcome to Pawills Computer Studies Class! Learn digital skills, computing concepts, software and responsible technology use."],
+ ["economics","💰 Economics","Welcome to Pawills Economics Class! Explore resources, production, markets, choices and economic systems."],
+ ["government","🏛️ Government","Welcome to Pawills Government Class! Learn about leadership, institutions, citizenship and governance."],
+ ["history","📜 History","Welcome to Pawills History Class! Explore people, events, societies and the development of Nigeria and the wider world."],
+ ["geography","🗺️ Geography","Welcome to Pawills Geography Class! Study places, people, environments, maps and physical processes."],
+ ["commerce","📈 Commerce","Welcome to Pawills Commerce Class! Learn how trade, business and commercial activities work."],
+ ["accounting","📒 Accounting","Welcome to Pawills Accounting Class! Build practical knowledge of financial records and accounting principles."],
+ ["cca","🎨 Cultural & Creative Arts","Welcome to Pawills Cultural & Creative Arts Class! Explore creativity, culture, visual arts, music and performance."],
+ ["crs-irs","🕌 Christian/Islamic Religious Studies","Welcome to Pawills Religious Studies Class! Explore faith, values, ethics and responsible living."],
+ ["phe","🏃 Physical & Health Education","Welcome to Pawills Physical & Health Education Class! Learn fitness, health, safety, movement and healthy living."],
+ ["agric","🌱 Agricultural Science","Welcome to Pawills Agricultural Science Class! Learn about crops, animals, soil, farm management and agriculture."],
+ ["home-economics","🧑‍🍳 Home Economics","Welcome to Pawills Home Economics Class! Develop practical knowledge in food, family living, clothing and home management."],
+ ["basic-technology","🔧 Basic Technology","Welcome to Pawills Basic Technology Class! Explore tools, materials, design, safety and practical technology."],
+ ["french","🗣️ French","Welcome to Pawills French Class! Develop vocabulary, communication and understanding of the French language."]
+];
+
+const CLASSES = [
+ "Primary 1","Primary 2","Primary 3","Primary 4","Primary 5","Primary 6",
+ "JSS 1","JSS 2","JSS 3","SS 1","SS 2","SS 3"
+];
+const TERMS = ["First Term","Second Term","Third Term"];
+
+let currentSubject = null;
+let currentUser = JSON.parse(localStorage.getItem("pawills_session") || "null");
+let uploadQueue = JSON.parse(localStorage.getItem("pawills_upload_queue") || "[]");
+let complaints = JSON.parse(localStorage.getItem("pawills_complaints") || "[]");
+
+function show(id){
+  document.querySelectorAll("main section").forEach(s=>s.classList.remove("active"));
+  const target=document.getElementById(id);
+  if(target) target.classList.add("active");
+  if(id==="scheme") renderSubjects();
+  if(id==="admin") refreshAdmin();
+  if(id==="community") updateChatState();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderSubjects(){
+  const grid=document.getElementById("subjectGrid");
+  grid.innerHTML=SUBJECTS.map(s=>`
+    <div class="subject" onclick="selectSubject('${s[0]}')">
+      <strong>${s[1]}</strong>
+      <p class="small">Tap to choose class and term</p>
+    </div>`).join("");
+  if(currentUser && currentUser.role==="admin") document.getElementById("adminUploadBox").classList.remove("hidden");
+}
+
+function selectSubject(id){
+  currentSubject=SUBJECTS.find(s=>s[0]===id);
+  document.getElementById("subjectGrid").classList.add("hidden");
+  document.getElementById("schemeBrowser").classList.remove("hidden");
+  document.getElementById("schemeIntro").innerHTML="<strong>"+currentSubject[1]+"</strong><br>"+currentSubject[2];
+  document.getElementById("schemeBreadcrumb").textContent=currentSubject[1]+" → Choose a class → Choose a term";
+  const cs=document.getElementById("classSelect");
+  cs.innerHTML=CLASSES.map(c=>`<option>${c}</option>`).join("");
+  renderTerms();
+}
+
+function renderTerms(){
+  document.getElementById("termSelect").innerHTML=TERMS.map(t=>`<option>${t}</option>`).join("");
+}
+
+function backToSubjects(){
+  document.getElementById("schemeBrowser").classList.add("hidden");
+  document.getElementById("subjectGrid").classList.remove("hidden");
+}
+
+function openSelectedScheme(){
+  if(!currentSubject)return;
+  const cls=document.getElementById("classSelect").value;
+  const term=document.getElementById("termSelect").value;
+  const found=uploadQueue.find(x=>x.subject===currentSubject[1]&&x.className===cls&&x.term===term);
+  const box=document.getElementById("schemeContent");
+  box.classList.remove("hidden");
+  box.innerHTML=found
+    ? `<h3>${currentSubject[1]}</h3><p><span class="pill">${cls}</span><span class="pill">${term}</span></p><p style="margin-top:10px"><strong>Uploaded file:</strong> ${escapeHtml(found.fileName)}</p><p class="small">This prototype records the upload locally. Real shared downloads require online storage.</p>`
+    : `<h3>${currentSubject[1]}</h3><p><span class="pill">${cls}</span><span class="pill">${term}</span></p><p style="margin-top:10px">No scheme has been uploaded for this selection yet.</p><p class="small">An administrator can upload it from the Admin Dashboard.</p>`;
+}
+
+function openAdminUpload(){
+  show("scheme");
+  setTimeout(()=>document.getElementById("adminUploadBox").scrollIntoView({behavior:"smooth"}),200);
+}
+
+function prepareUpload(){
+  if(!currentUser || currentUser.role!=="admin"){alert("Administrator access is required.");return;}
+  const subject=document.getElementById("uploadSubject").value;
+  const className=document.getElementById("uploadClass").value;
+  const term=document.getElementById("uploadTerm").value;
+  const file=document.getElementById("schemeFile").files[0];
+  if(!file){alert("Choose a scheme file first.");return;}
+  uploadQueue.push({subject,className,term,fileName:file.name,date:new Date().toISOString()});
+  localStorage.setItem("pawills_upload_queue",JSON.stringify(uploadQueue));
+  document.getElementById("uploadResult").classList.remove("hidden");
+  document.getElementById("uploadResult").textContent="Added to the local admin upload queue: "+file.name;
+  renderUploadQueue();
+  refreshAdmin();
+}
+
+function renderUploadQueue(){
+  const box=document.getElementById("uploadQueue");
+  if(!uploadQueue.length){box.innerHTML='<p class="small">No scheme records added in this browser yet.</p>';return;}
+  box.innerHTML=uploadQueue.map((x,i)=>`<p><strong>${escapeHtml(x.subject)}</strong> — ${escapeHtml(x.className)} — ${escapeHtml(x.term)} — ${escapeHtml(x.fileName)} <button class="btn danger" style="margin-left:8px" onclick="removeUpload(${i})">Remove</button></p>`).join("");
+}
+function removeUpload(i){uploadQueue.splice(i,1);localStorage.setItem("pawills_upload_queue",JSON.stringify(uploadQueue));renderUploadQueue();refreshAdmin();}
+
+function populateUploadSelectors(){
+  document.getElementById("uploadSubject").innerHTML=SUBJECTS.map(s=>`<option>${s[1]}</option>`).join("");
+  document.getElementById("uploadClass").innerHTML=CLASSES.map(c=>`<option>${c}</option>`).join("");
+  document.getElementById("uploadTerm").innerHTML=TERMS.map(t=>`<option>${t}</option>`).join("");
+}
+
+function register(){
+  const email=document.getElementById("email").value.trim().toLowerCase();
+  const password=document.getElementById("password").value;
+  if(!email||password.length<8){setLoginResult("Enter a valid email and a password of at least 8 characters.");return;}
+  setLoginResult("Account registration interface ready. Connect a secure authentication provider before storing real passwords.");
+}
+
+function login(){
+  const email=document.getElementById("email").value.trim().toLowerCase();
+  const password=document.getElementById("password").value;
+  if(!email||!password){setLoginResult("Enter your email and password.");return;}
+  setLoginResult("Login interface ready. Real verification must be handled by the backend/authentication provider.");
+}
+
+function adminLoginNotice(){
+  alert("The admin dashboard is protected by the planned server-side admin role. Connect the authentication backend before granting real admin access.");
+}
+
+function logout(){
+  currentUser=null;
+  localStorage.removeItem("pawills_session");
+  updateAuthUI();
+  setLoginResult("You have been logged out.");
+}
+function setLoginResult(text){document.getElementById("loginResult").textContent=text;}
+
+function updateAuthUI(){
+  const adminNav=document.getElementById("adminNav");
+  if(currentUser && currentUser.role==="admin") adminNav.classList.remove("hidden"); else adminNav.classList.add("hidden");
+  updateChatState();
+}
+function updateChatState(){
+  const input=document.getElementById("chatInput"), btn=document.getElementById("sendChatBtn"), notice=document.getElementById("chatLoginNotice");
+  if(currentUser){
+    input.disabled=false;btn.disabled=false;notice.textContent="Signed in as "+currentUser.email+". Your email is used as your chat display name.";
+  }else{
+    input.disabled=true;btn.disabled=true;notice.textContent="Log in with a teacher account to send messages. Your verified email will be shown as your display name.";
+  }
+}
+
+function sendMessage(){
+  if(!currentUser){alert("Please log in first.");return;}
+  const input=document.getElementById("chatInput"), text=input.value.trim();
+  if(!text)return;
+  const box=document.getElementById("messages"), div=document.createElement("div");
+  div.className="msg me";
+  div.innerHTML='<div class="sender">'+escapeHtml(currentUser.email)+'</div>'+escapeHtml(text);
+  box.appendChild(div);input.value="";box.scrollTop=box.scrollHeight;
+  localStorage.setItem("pawills_last_message",text);
+}
+
+function submitComplaint(){
+  const name=document.getElementById("complaintName").value.trim();
+  const contact=document.getElementById("complaintContact").value.trim();
+  const text=document.getElementById("complaintText").value.trim();
+  const result=document.getElementById("complaintResult");
+  result.classList.remove("hidden");
+  if(!name||!text){result.textContent="Please enter your name and complaint.";return;}
+  complaints.push({name,contact,text,date:new Date().toISOString()});
+  localStorage.setItem("pawills_complaints",JSON.stringify(complaints));
+  result.textContent="Complaint recorded in this prototype. Online admin delivery will be connected to the backend.";
+  refreshAdmin();
+}
+
+function searchJobs(){
+  const location=document.getElementById("jobLocation").value.trim()||"Nigeria";
+  const keyword=document.getElementById("jobKeyword").value.trim()||"teacher";
+  const q=encodeURIComponent(`${keyword} school jobs ${location} Nigeria`);
+  const box=document.getElementById("jobResults");
+  box.innerHTML=`
+    <div class="job"><h3>🔎 Web search</h3>
+      <p>Search publicly listed vacancies for <strong>${escapeHtml(keyword)}</strong> around <strong>${escapeHtml(location)}</strong>.</p>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?q=${q}">Search Google</a>
+      <a class="btn secondary" target="_blank" rel="noopener" href="https://www.bing.com/search?q=${q}">Search Bing</a>
+      <p class="small">Review each vacancy before applying. Pawills Hub does not automatically submit applications to third-party portals.</p>
+    </div>`;
+}
+
+const dict={
+ hausa:{"sannu":"hello","ina kwana":"good morning","ina yini":"good afternoon","na gode":"thank you","yaya kake":"how are you"},
+ yoruba:{"bawo ni":"how are you","e kaaro":"good morning","e kaasan":"good afternoon","o se":"thank you","bẹẹni":"yes","rara":"no"},
+ igbo:{"kedu":"how are you","ndewo":"hello","ututu oma":"good morning","daalu":"thank you","ee":"yes","mba":"no"}
+};
+function translatePhrase(){
+ const lang=document.getElementById("lang").value,text=document.getElementById("phrase").value.trim().toLowerCase();
+ const result=dict[lang][text];
+ document.getElementById("translation").textContent=result?"English: "+result:"Phrase not in the starter dictionary yet.";
+}
+
+let canvas,ctx,drawing=false,erase=false;
+function setupBoard(){
+ canvas=document.getElementById("board"); if(!canvas)return;
+ ctx=canvas.getContext("2d");
+ resizeCanvas();
+ window.addEventListener("resize",resizeCanvas);
+ canvas.addEventListener("mousedown",startDraw);canvas.addEventListener("mousemove",draw);canvas.addEventListener("mouseup",stopDraw);canvas.addEventListener("mouseleave",stopDraw);
+ canvas.addEventListener("touchstart",startDraw,{passive:false});canvas.addEventListener("touchmove",draw,{passive:false});canvas.addEventListener("touchend",stopDraw);
+}
+function resizeCanvas(){if(!canvas)return;const r=canvas.getBoundingClientRect();canvas.width=r.width*devicePixelRatio;canvas.height=r.height*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+function pointerPos(e){const r=canvas.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return{x:p.clientX-r.left,y:p.clientY-r.top}}
+function startDraw(e){drawing=true;const p=pointerPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);e.preventDefault()}
+function draw(e){if(!drawing)return;const p=pointerPos(e);ctx.lineWidth=erase?18:3;ctx.lineCap="round";ctx.strokeStyle=erase?"#fff":"#173d73";ctx.lineTo(p.x,p.y);ctx.stroke();e.preventDefault()}
+function stopDraw(){drawing=false}
+function clearBoard(){if(canvas)ctx.clearRect(0,0,canvas.width,canvas.height)}
+function setEraser(){erase=true}function setPen(){erase=false}
+
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;document.getElementById("installBox").style.display="block"});
+async function installApp(){if(!deferredPrompt)return;deferredPrompt.prompt();deferredPrompt=null}
+
+function refreshAdmin(){
+ document.getElementById("schemeCount").textContent=uploadQueue.length;
+ document.getElementById("complaintCount").textContent=complaints.length;
+ document.getElementById("teacherCount").textContent=0;
+ renderUploadQueue();
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+document.addEventListener("DOMContentLoaded",()=>{
+ renderSubjects();
+ populateUploadSelectors();
+ renderUploadQueue();
+ setupBoard();
+ updateAuthUI();
+ refreshAdmin();
+});
+</script>
+</body>
+</html>
